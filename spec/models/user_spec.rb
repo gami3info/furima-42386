@@ -81,10 +81,20 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name は全角（漢字・ひらがな・カタカナ）で入力してください')
       end
+      it 'first_nameが半角では登録できない' do
+        @user.first_name = 'taro'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name は全角（漢字・ひらがな・カタカナ）で入力してください')
+      end
       it 'last_name_kanaがカタカナ以外では登録できない' do
         @user.last_name_kana = 'やまだ'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana は全角カタカナで入力してください')
+      end
+      it 'first_name_kanaがカタカナ以外では登録できない' do
+        @user.first_name_kana = 'たろう'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kana は全角カタカナで入力してください')
       end
       it 'passwordが6文字以上でも、英字のみでは登録できない' do
         @user.password = 'abcdef'
