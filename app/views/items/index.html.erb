@@ -130,33 +130,33 @@
       <%# 商品のインスタンス変数に値が入っているか確認する %>
       <% if @items.present? %>
         <% @items.each do |item| %>
-         <%#= link_to '#' do %>
-          <li class='list'>
-            <div class='item-img-content'>
-              <%= image_tag item.image, class: "item-img" %>
-              <%# 商品が売れていればsold outを表示する %>
-              <%# if item.purchase.present? %>
-                <div class='sold-out'>
-                  <span>Sold Out!!</span>
-                </div>
-              <%# end %>
-            </div>
-            <div class='item-info'>
-              <h3 class='item-name'>
-                <%= item.name %>
-              </h3>
-              <div class='item-price'>
-                <span><%= item.price %>円<br><%= item.shipping_fee_burden.name %></span>
-                <div class='star-btn'>
-                  <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
+          <%= link_to item_path(item) do %>
+            <li class='list'>
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
+                <%# 商品が売れていればsold outを表示する %>
+                <% if item.purchase.present? %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                <% end %>
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br><%= item.shipping_fee_burden.name %></span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-         <%# end %>
+            </li>
+          <% end %>
         <% end %>
-      <%# else %>
+      <% else %>
         <%# 商品がない場合はダミー商品を表示する %>
         <li class='list'>
           <%= link_to '#' do %>
@@ -175,7 +175,7 @@
           </div>
           <% end %>
         </li>
-      <%# end %>
+      <% end %>
     </ul>
   </div>
   <%# /商品一覧 %>
