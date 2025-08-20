@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   # Associations
   belongs_to :user
   has_one_attached :image
-  has_one :purchase
+  # has_one :purchase
 
   belongs_to :category
   belongs_to :condition

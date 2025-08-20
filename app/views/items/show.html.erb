@@ -39,33 +39,33 @@
     <%# //商品が売れていない場合は、購入ボタンを表示する %>
 
     <div class="item-explain-box">
-      <span><%= @item.description %></span>
+      <span><%= "商品説明" %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= @item.user.nickname %></td>
+          <td class="detail-value"><%= "出品者名" %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @item.category.name %></td>
+          <td class="detail-value"><%= "商品カテゴリー" %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.condition.name %></td>
+          <td class="detail-value"><%= "商品の状態" %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.shipping_fee_burden.name %></td>
+          <td class="detail-value"><%= "送料" %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefecture.name %></td>
+          <td class="detail-value"><%= "地域" %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @item.shipping_day.name %></td>
+          <td class="detail-value"><%= "発送日" %></td>
         </tr>
       </tbody>
     </table>
