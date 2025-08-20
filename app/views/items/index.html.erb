@@ -130,6 +130,7 @@
       <%# 商品のインスタンス変数に値が入っているか確認する %>
       <% if @items.present? %>
         <% @items.each do |item| %>
+         <%#= link_to '#' do %>
           <li class='list'>
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
@@ -153,6 +154,7 @@
               </div>
             </div>
           </li>
+         <%#= end %>
         <% end %>
       <% else %>
         <%# 商品がない場合はダミー商品を表示する %>
