@@ -128,7 +128,7 @@
     </div>
     <ul class='item-lists'>
       <%# 商品のインスタンス変数に値が入っているか確認する %>
-      <%# if @items.present? %>
+      <% if @items.present? %>
         <% @items.each do |item| %>
          <%#= link_to '#' do %>
           <li class='list'>
