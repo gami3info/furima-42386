@@ -6,7 +6,7 @@
   </div>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= render 'form', item: @item %>
+    <%= render partial: 'form', locals: { item: @item } %>
   </div>
 </div>
 

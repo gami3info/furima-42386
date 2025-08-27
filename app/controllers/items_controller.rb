@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :redirect_if_not_author_or_sold, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.with_attached_image.includes(:purchase).order('created_at DESC')
+    @items = Item.order('created_at DESC')
   end
 
   def new
