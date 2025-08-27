@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def redirect_if_not_author_or_sold
-    redirect_to root_path if current_user.id != @item.user_id || @item.purchase.present?
+    redirect_to root_path if current_user.id != @item.user_id
   end
 end
