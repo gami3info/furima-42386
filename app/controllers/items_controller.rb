@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_author_or_sold, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.with_attached_image.includes(:purchase).order('created_at DESC')
+    @items = Item.order('created_at DESC')
   end
 
   def new
@@ -22,6 +23,23 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def edit
+    # before_actionで@itemがセットされるため、中身は空で良い
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
+
   private
 
   def item_params
@@ -31,5 +49,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def redirect_if_not_author_or_sold
+    redirect_to root_path if current_user.id != @item.user_id || @item.purchase.present?
   end
 end
