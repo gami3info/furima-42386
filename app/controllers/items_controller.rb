@@ -35,10 +35,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  #  def destroy
-  #   @item.destroy
-  #   redirect_to root_path
-  #  end
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
 
   private
 
@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def redirect_if_not_author_or_sold
-    redirect_to root_path if current_user.id != @item.user_id
+    redirect_to root_path if current_user.id != @item.user_id || @item.purchase.present?
   end
 end

@@ -9,9 +9,11 @@
     <div class="item-img-content">
       <%= image_tag @item.image, class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示 %>
+      <% if @item.purchase.present? %>
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -23,14 +25,14 @@
     </div>
 
     <%# 商品が売れておらず、ログインしている場合にボタンを表示 %>
-    <% if user_signed_in? %>
+    <% if @item.purchase.nil? && user_signed_in? %>
       <% if current_user.id == @item.user_id %>
         <%= link_to "商品の編集", edit_item_path(@item), class: "item-red-btn" %>
         <p class="or-text">or</p>
-        <%= link_to "削除","#", data: { turbo_method: :delete }, class: "item-destroy" %>
+        <%= link_to "削除", item_path(@item), data: { turbo_method: :delete }, class: "item-destroy" %>
       <% else %>
         <%# 購入機能は別実装のため、一旦ダミーのリンクを設置 %>
-        <%= link_to "購入画面に進む", "#", class: "item-red-btn" %>
+        <%= link_to "購入画面に進む", "#", class:"item-red-btn"%>
       <% end %>
     <% end %>
 
