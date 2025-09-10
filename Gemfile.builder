@@ -52,10 +52,11 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-rspec_rails', require: false
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem 'spring'
+end
+
+group :development do
+  gem 'web-console'
 end
 
 group :test do
