@@ -16,4 +16,5 @@ const calculatePrice = () => {
   });
 };
 
-window.addEventListener("DOMContentLoaded", calculatePrice);
+window.addEventListener("turbo:load", calculatePrice);
+window.addEventListener("turbo:render", calculatePrice);
