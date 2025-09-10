@@ -52,7 +52,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-rspec_rails', require: false
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'spring'
 end
 
 group :development do
@@ -63,7 +63,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'database_cleaner-active_record'
 end
 
 group :production do

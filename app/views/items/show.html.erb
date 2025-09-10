@@ -31,8 +31,7 @@
         <p class="or-text">or</p>
         <%= link_to "削除", item_path(@item), data: { turbo_method: :delete }, class: "item-destroy" %>
       <% else %>
-        <%# 購入機能は別実装のため、一旦ダミーのリンクを設置 %>
-        <%= link_to "購入画面に進む", "#", class:"item-red-btn"%>
+       <%= link_to "購入画面に進む", item_purchases_path(@item), class:"item-red-btn", data: { turbo: false } %>
       <% end %>
     <% end %>
 

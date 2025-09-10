@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
 
 <div class='transaction-contents'>
   <div class='transaction-main'>
@@ -31,10 +32,8 @@
     </div>
     <%# /支払額 %>
 
-    <%# フォームを1つに統合し、モデルとURLを正しく指定します %>
     <%= form_with model: @purchase_shipping_address, url: item_purchases_path(@item), id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
 
-    <%# サーバーサイドのバリデーションエラーメッセージを表示するパーシャル %>
     <%= render 'shared/error_messages', model: f.object %>
 
     <%# カード情報 %>
@@ -49,21 +48,29 @@
           <label class="form-text">カード番号</label>
           <span class="indispensable">必須</span>
         </div>
-        <div id="card-number"></div>
+        <div id="card-number" class="input-default"></div>
+        <%# ここからカードブランドのロゴ画像を表示 %>
+        <div class="card-brand-logos">
+          <%= image_tag "card-visa.gif", class: "card-logo" %>
+          <%= image_tag "card-mastercard.gif", class: "card-logo" %>
+          <%= image_tag "card-jcb.gif", class: "card-logo" %>
+          <%= image_tag "card-amex.gif", class: "card-logo" %>
+        </div>
+        <%# ここまで %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">有効期限</label>
           <span class="indispensable">必須</span>
         </div>
-        <div id="card-exp"></div>
+        <div id="card-exp" class="input-default"></div>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">セキュリティコード</label>
           <span class="indispensable">必須</span>
         </div>
-        <div id="card-cvc"></div>
+        <div id="card-cvc" class="input-default"></div>
       </div>
     </div>
     <%# /カード情報 %>
@@ -120,7 +127,7 @@
 
     <%# ボタン %>
     <div class='buy-btn'>
-      <%= f.submit "購入" ,class:"buy-red-btn" %>
+      <%= f.submit "購入" ,class:"buy-red-btn", id:"button" %>
     </div>
     <%# /ボタン %>
     <% end %>
