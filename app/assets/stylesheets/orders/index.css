@@ -95,6 +95,12 @@
   font-size: 20px;
 }
 
+.card-brand-logos {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
 .available-card {
   display: flex;
   height: 35px;
