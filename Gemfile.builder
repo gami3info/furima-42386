@@ -48,7 +48,15 @@ group :development, :test do
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec', require: false # /Users/hashigamiyuuta/projects/furima-42386/app/controllers/application_controller.rb
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      # 開発環境では 'admin'/'2222' を使用し、それ以外の環境(本番環境など)では環境変数を使用する
+      (Rails.env.development? && username == 'admin' && password == '2222') || (username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD'])
+    end
+  end
+
   gem 'rubocop-rspec_rails', require: false
   gem 'spring'
 end
